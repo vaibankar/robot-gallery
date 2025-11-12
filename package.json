@@ -1,0 +1,13 @@
+{
+  "name": "robot-gallery-node",
+  "version": "1.0.0",
+  "description": "Robot gallery with buy/sell functionality",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}

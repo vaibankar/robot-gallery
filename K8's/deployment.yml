@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: robot-gallery-deployment
+  labels:
+    app: robot-gallery
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: robot-gallery
+  template:
+    metadata:
+      labels:
+        app: robot-gallery
+    spec:
+      containers:
+        - name: robot-gallery
+          image: your-dockerhub-username/robot-gallery-node:latest  # replace this
+          ports:
+            - containerPort: 3000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10

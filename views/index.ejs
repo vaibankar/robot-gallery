@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🤖 Robot Gallery</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>🤖 Robot Gallery</h1>
+  <p class="subtitle">Buy or sell your favorite robots</p>
+
+  <% if (msg) { %>
+    <div class="message"><%= msg %></div>
+  <% } %>
+
+  <div class="gallery">
+    <% robots.forEach(robot => { %>
+      <div class="card">
+        <img src="<%= robot.img %>" alt="<%= robot.name %>">
+        <h3><%= robot.name %></h3>
+        <p>Buy: $<%= robot.buy %> | Sell: $<%= robot.sell %></p>
+        <p>Stock: <%= robot.stock %></p>
+        <div class="buttons">
+          <a href="/buy/<%= robot.id %>" class="btn buy">Buy</a>
+          <a href="/sell/<%= robot.id %>" class="btn sell">Sell</a>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <footer>Note: In-memory demo. Restart resets stock.</footer>
+</body>
+</html>
